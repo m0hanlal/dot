@@ -20,6 +20,9 @@ export function set (src, path = '', value) {
 
   let current = src
   for (let i = 0; i < pathKeys.length; i++) {
+    if (pathKeys[i] === '__proto__' || pathKeys[i] === 'constructor' || pathKeys[i] === 'prototype') {
+      return;
+    }
     if (i === lastIndex) {
       current[pathKeys[i]] = value
     } else {
